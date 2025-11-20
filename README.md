@@ -8,6 +8,7 @@ Một ứng dụng web React cho phép người dùng nhập vào tên một đ�
 - 🗺️ **Hiển thị bản đồ**: Sử dụng OpenStreetMap để hiển thị vị trí
 - 📍 **5 Điểm quan tâm**: Hiển thị tự động 5 POI gần vị trí tìm kiếm
 - 💾 **Danh sách POI**: Liệt kê tên và loại của mỗi điểm quan tâm
+- 🌤️ **Thông tin thời tiết**: Hiển thị nhiệt độ, tốc độ gió, độ ẩm, tình trạng thời tiết
 - 📱 **Responsive Design**: Hoạt động tốt trên desktop, tablet và mobile
 - ✨ **Giao diện đẹp**: UI/UX hiện đại với animation mượt mà
 
@@ -17,7 +18,8 @@ Một ứng dụng web React cho phép người dùng nhập vào tên một đ�
 - **Build Tool**: Vite
 - **Bản đồ**: Leaflet + OpenStreetMap (OpenStreetMap tiles)
 - **Geocoding**: Nominatim API (OpenStreetMap)
-- **POI Data**: Overpass API (OpenStreetMap)
+- **POI Data**: OpenStreetMap database
+- **Thời tiết**: Open-Meteo API (miễn phí, không cần API key)
 - **Styling**: CSS3 với gradients và animations
 
 ## Cài Đặt
@@ -93,11 +95,12 @@ npm run build
 - **Miễn phí**: Có
 - **Rate Limit**: 1 request/giây
 
-### 2. Overpass API (POI Data)
-- **URL**: https://overpass-api.de/api/interpreter
-- **Mục đích**: Lấy dữ liệu các điểm quan tâm (tourism, amenities, historic sites) trong bán kính 5km
-- **Miễn phí**: Có
-- **Note**: Đôi khi chậm do tải cao
+### 2. Open-Meteo (Thời tiết)
+- **URL**: https://api.open-meteo.com/v1/forecast
+- **Mục đích**: Lấy dữ liệu thời tiết hiện tại (nhiệt độ, độ ẩm, gió, mã thời tiết)
+- **Miễn phí**: Có, không cần API key
+- **Ưu điểm**: Nhanh, ổn định, miễn phí hoàn toàn
+- **Dữ liệu**: Nhiệt độ, độ ẩm, tốc độ gió, mô tả thời tiết
 
 ### 3. OpenStreetMap Tiles
 - **URL**: https://tile.openstreetmap.org/
@@ -147,7 +150,9 @@ npm run build
 - [ ] Thêm rating/review từ OpenStreetMap
 - [ ] Export danh sách POI thành PDF/Excel
 - [ ] Tìm kiếm bằng bán kính tùy chỉnh
+- [ ] Dự báo thời tiết 7 ngày
 - [ ] Dark mode
+- [ ] Thêm cảnh báo thời tiết (gió mạnh, mưa lớn, etc.)
 
 ## License
 
