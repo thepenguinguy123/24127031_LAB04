@@ -3,6 +3,7 @@ import './App.css'
 import SearchLocation from './components/SearchLocation'
 import MapDisplay from './components/MapDisplay'
 import WeatherDisplay from './components/WeatherDisplay'
+import Translator from './components/Translator'
 
 function App() {
   const [location, setLocation] = useState(null)
@@ -189,6 +190,7 @@ function App() {
           </div>
         )}
       </div>
+      <Translator />
     </div>
   )
 }

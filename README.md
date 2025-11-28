@@ -9,6 +9,7 @@ Một ứng dụng web React cho phép người dùng nhập vào tên một đ�
 - 📍 **5 Điểm quan tâm**: Hiển thị tự động 5 POI gần vị trí tìm kiếm
 - 💾 **Danh sách POI**: Liệt kê tên và loại của mỗi điểm quan tâm
 - 🌤️ **Thông tin thời tiết**: Hiển thị nhiệt độ, tốc độ gió, độ ẩm, tình trạng thời tiết
+- 🌐 **Dịch thuật Anh-Việt**: Popup nhỏ cho phép dịch câu tiếng Anh sang tiếng Việt
 - 📱 **Responsive Design**: Hoạt động tốt trên desktop, tablet và mobile
 - ✨ **Giao diện đẹp**: UI/UX hiện đại với animation mượt mà
 
@@ -61,11 +62,18 @@ npm run build
    - Bản đồ sẽ hiển thị vị trí địa điểm được tìm kiếm
    - Danh sách 5 điểm quan tâm sẽ được hiển thị
    - Trên bản đồ, marker chính (màu xanh) là vị trí tìm kiếm, các marker số 1-5 (màu sắc khác nhau) là những điểm quan tâm
+   - Vòng tròn xanh bao quanh vị trí tìm kiếm (bán kính 5km)
 
 3. **Tương tác với bản đồ**:
    - Click vào bất kỳ marker nào để xem thông tin chi tiết
    - Scroll để zoom in/out
    - Kéo để di chuyển bản đồ
+
+4. **Dịch thuật Anh-Việt**:
+   - Click nút 🌐 ở góc dưới phải
+   - Nhập câu tiếng Anh cần dịch
+   - Click "🔄 Dịch" để dịch sang tiếng Việt
+   - Có thể "📋 Copy" kết quả để sử dụng
 
 ## Cấu Trúc Thư Mục
 
@@ -95,14 +103,21 @@ npm run build
 - **Miễn phí**: Có
 - **Rate Limit**: 1 request/giây
 
-### 2. Open-Meteo (Thời tiết)
+### 3. Open-Meteo (Thời tiết)
 - **URL**: https://api.open-meteo.com/v1/forecast
 - **Mục đích**: Lấy dữ liệu thời tiết hiện tại (nhiệt độ, độ ẩm, gió, mã thời tiết)
 - **Miễn phí**: Có, không cần API key
 - **Ưu điểm**: Nhanh, ổn định, miễn phí hoàn toàn
 - **Dữ liệu**: Nhiệt độ, độ ẩm, tốc độ gió, mô tả thời tiết
 
-### 3. OpenStreetMap Tiles
+### 4. MyMemory Translated (Dịch thuật)
+- **URL**: https://api.mymemory.translated.net/get
+- **Mục đích**: Dịch câu từ tiếng Anh sang tiếng Việt
+- **Miễn phí**: Có, không cần API key
+- **Ưu điểm**: Hoàn toàn miễn phí, không yêu cầu xác thực, ổn định
+- **Hỗ trợ**: Hơn 100 ngôn ngữ
+
+### 5. OpenStreetMap Tiles
 - **URL**: https://tile.openstreetmap.org/
 - **Mục đích**: Hiển thị bản đồ nền
 - **Miễn phí**: Có, cần tuân thủ usage policy
@@ -153,6 +168,8 @@ npm run build
 - [ ] Dự báo thời tiết 7 ngày
 - [ ] Dark mode
 - [ ] Thêm cảnh báo thời tiết (gió mạnh, mưa lớn, etc.)
+- [ ] Hỗ trợ dịch thuật hai chiều (Việt → Anh)
+- [ ] Thêm các ngôn ngữ khác vào dịch thuật
 
 ## License
 
