@@ -4,7 +4,8 @@ Một ứng dụng web React cho phép người dùng nhập vào tên một đ�
 
 ## Tính Năng
 
-- 🔍 **Tìm kiếm địa điểm**: Nhập tên bất kỳ địa điểm ở Việt Nam
+- � **Đăng ký & Đăng nhập**: Email/Password hoặc Google Sign-in
+- �🔍 **Tìm kiếm địa điểm**: Nhập tên bất kỳ địa điểm ở Việt Nam
 - 🗺️ **Hiển thị bản đồ**: Sử dụng OpenStreetMap để hiển thị vị trí
 - 📍 **5 Điểm quan tâm**: Hiển thị tự động 5 POI gần vị trí tìm kiếm
 - 💾 **Danh sách POI**: Liệt kê tên và loại của mỗi điểm quan tâm
@@ -17,10 +18,12 @@ Một ứng dụng web React cho phép người dùng nhập vào tên một đ�
 
 - **Frontend Framework**: React 18
 - **Build Tool**: Vite
+- **Authentication**: Firebase (Email/Password + Google Sign-in)
 - **Bản đồ**: Leaflet + OpenStreetMap (OpenStreetMap tiles)
 - **Geocoding**: Nominatim API (OpenStreetMap)
 - **POI Data**: OpenStreetMap database
 - **Thời tiết**: Open-Meteo API (miễn phí, không cần API key)
+- **Dịch thuật**: MyMemory Translated API
 - **Styling**: CSS3 với gradients và animations
 
 ## Cài Đặt
@@ -53,27 +56,37 @@ npm run build
 
 ## Cách Sử Dụng
 
-1. **Tìm kiếm địa điểm**:
-   - Nhập tên địa điểm vào ô tìm kiếm (VD: "Hà Nội", "Đà Nẵng", "Hạ Long")
-   - Click nút "Tìm kiếm" hoặc nhấn Enter
-   - Hoặc click vào một gợi ý nhanh
+### Bước 1: Đăng nhập / Đăng ký
+- Chọn một phương thức:
+  - **Email/Password**: Nhập email và mật khẩu, click "Đăng ký" hoặc "Đăng nhập"
+  - **Google**: Click nút "Đăng nhập với Google", chọn tài khoản Google
 
-2. **Xem kết quả**:
-   - Bản đồ sẽ hiển thị vị trí địa điểm được tìm kiếm
-   - Danh sách 5 điểm quan tâm sẽ được hiển thị
-   - Trên bản đồ, marker chính (màu xanh) là vị trí tìm kiếm, các marker số 1-5 (màu sắc khác nhau) là những điểm quan tâm
-   - Vòng tròn xanh bao quanh vị trí tìm kiếm (bán kính 5km)
+### Bước 2: Tìm kiếm địa điểm
+- Nhập tên địa điểm vào ô tìm kiếm (VD: "Hà Nội", "Đà Nẵng", "Hạ Long")
+- Click nút "Tìm kiếm" hoặc nhấn Enter
+- Hoặc click vào một gợi ý nhanh
 
-3. **Tương tác với bản đồ**:
-   - Click vào bất kỳ marker nào để xem thông tin chi tiết
-   - Scroll để zoom in/out
-   - Kéo để di chuyển bản đồ
+### Bước 3: Xem kết quả
+- Bản đồ sẽ hiển thị vị trí địa điểm được tìm kiếm
+- Danh sách 5 điểm quan tâm sẽ được hiển thị
+- Trên bản đồ, marker chính (màu xanh) là vị trí tìm kiếm, các marker số 1-5 (màu sắc khác nhau) là những điểm quan tâm
+- Vòng tròn xanh bao quanh vị trí tìm kiếm (bán kính 5km)
+- Thông tin thời tiết tại địa điểm được hiển thị
 
-4. **Dịch thuật Anh-Việt**:
-   - Click nút 🌐 ở góc dưới phải
-   - Nhập câu tiếng Anh cần dịch
-   - Click "🔄 Dịch" để dịch sang tiếng Việt
-   - Có thể "📋 Copy" kết quả để sử dụng
+### Bước 4: Tương tác với bản đồ
+- Click vào bất kỳ marker nào để xem thông tin chi tiết
+- Scroll để zoom in/out
+- Kéo để di chuyển bản đồ
+
+### Bước 5: Dịch thuật Anh-Việt
+- Click nút 🌐 ở góc dưới phải
+- Nhập câu tiếng Anh cần dịch
+- Click "🔄 Dịch" để dịch sang tiếng Việt
+- Có thể "📋 Copy" kết quả để sử dụng
+
+### Bước 6: Đăng xuất
+- Click nút 🚪 ở góc trên phải
+- Xác nhận đăng xuất
 
 ## Cấu Trúc Thư Mục
 

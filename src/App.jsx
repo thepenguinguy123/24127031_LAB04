@@ -1,15 +1,34 @@
-import { useState } from 'react'
+import { useState, useContext } from 'react'
 import './App.css'
 import SearchLocation from './components/SearchLocation'
 import MapDisplay from './components/MapDisplay'
 import WeatherDisplay from './components/WeatherDisplay'
 import Translator from './components/Translator'
+import Auth from './components/Auth'
+import UserProfile from './components/UserProfile'
+import { AuthContext } from './context/AuthContext'
 
 function App() {
   const [location, setLocation] = useState(null)
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [poiData, setPoiData] = useState(null)
+
+  const { user, loading: authLoading } = useContext(AuthContext)
+
+  // Show loading while checking auth
+  if (authLoading) {
+    return (
+      <div className="app loading-container">
+        <div className="spinner">⏳ Đang tải...</div>
+      </div>
+    )
+  }
+
+  // Show auth screen if not logged in
+  if (!user) {
+    return <Auth />
+  }
 
   const handleSearch = async (locationName) => {
     setLoading(true)
@@ -160,6 +179,7 @@ function App() {
 
   return (
     <div className="app">
+      <UserProfile />
       <div className="container">
         <header className="header">
           <h1>🗺️ Bản Đồ Điểm Quan Tâm Việt Nam</h1>

@@ -7,6 +7,27 @@
   min-height: 100vh;
 }
 
+.app.loading-container {
+  align-items: center;
+  justify-content: center;
+}
+
+.spinner {
+  font-size: 24px;
+  color: white;
+  font-weight: 600;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
 .container {
   flex: 1;
   display: flex;
