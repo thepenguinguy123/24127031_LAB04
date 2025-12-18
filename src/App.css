@@ -19,6 +19,41 @@
   animation: spin 1s linear infinite;
 }
 
+.app-tabs {
+  display: flex;
+  gap: 0;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0;
+  margin: 0;
+  border-bottom: 2px solid rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(10px);
+}
+
+.tab-button {
+  flex: 1;
+  padding: 16px 20px;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.7);
+  border: none;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s;
+  border-bottom: 3px solid transparent;
+  text-align: center;
+}
+
+.tab-button:hover {
+  color: white;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.tab-button.active {
+  color: white;
+  border-bottom-color: white;
+  background: rgba(255, 255, 255, 0.15);
+}
+
 @keyframes spin {
   0% {
     transform: rotate(0deg);

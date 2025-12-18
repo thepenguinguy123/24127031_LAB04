@@ -6,6 +6,7 @@ import WeatherDisplay from './components/WeatherDisplay'
 import Translator from './components/Translator'
 import Auth from './components/Auth'
 import UserProfile from './components/UserProfile'
+import SentimentAnalysis from './components/SentimentAnalysis'
 import { AuthContext } from './context/AuthContext'
 
 function App() {
@@ -13,6 +14,7 @@ function App() {
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState(null)
   const [poiData, setPoiData] = useState(null)
+  const [activeTab, setActiveTab] = useState('map') // 'map' or 'sentiment'
 
   const { user, loading: authLoading } = useContext(AuthContext)
 
@@ -180,36 +182,62 @@ function App() {
   return (
     <div className="app">
       <UserProfile />
-      <div className="container">
-        <header className="header">
-          <h1>🗺️ Bản Đồ Điểm Quan Tâm Việt Nam</h1>
-          <p>Tìm 5 điểm du lịch nổi bật ở các địa điểm ở Việt Nam</p>
-        </header>
-
-        <SearchLocation onSearch={handleSearch} loading={loading} />
-
-        {error && <div className="error-message">{error}</div>}
-
-        {location && (
-          <div className="results">
-            <h2>Tìm kiếm: {location.name}</h2>
-            <WeatherDisplay lat={location.lat} lon={location.lon} locationName={location.name} />
-            {poiData && poiData.length > 0 && (
-              <div className="poi-list">
-                <h3>Điểm quan tâm được tìm thấy:</h3>
-                <ul>
-                  {poiData.map((poi) => (
-                    <li key={poi.id}>
-                      <strong>{poi.name}</strong> - {poi.type}
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-            <MapDisplay location={location} pois={poiData} />
-          </div>
-        )}
+      
+      {/* Tab Navigation */}
+      <div className="app-tabs">
+        <button 
+          className={`tab-button ${activeTab === 'map' ? 'active' : ''}`}
+          onClick={() => setActiveTab('map')}
+        >
+          🗺️ Bản Đồ
+        </button>
+        <button 
+          className={`tab-button ${activeTab === 'sentiment' ? 'active' : ''}`}
+          onClick={() => setActiveTab('sentiment')}
+        >
+          📊 Phân Tích Cảm Xúc
+        </button>
       </div>
+
+      {/* Map Tab */}
+      {activeTab === 'map' && (
+        <div className="container">
+          <header className="header">
+            <h1>🗺️ Bản Đồ Điểm Quan Tâm Việt Nam</h1>
+            <p>Tìm 5 điểm du lịch nổi bật ở các địa điểm ở Việt Nam</p>
+          </header>
+
+          <SearchLocation onSearch={handleSearch} loading={loading} />
+
+          {error && <div className="error-message">{error}</div>}
+
+          {location && (
+            <div className="results">
+              <h2>Tìm kiếm: {location.name}</h2>
+              <WeatherDisplay lat={location.lat} lon={location.lon} locationName={location.name} />
+              {poiData && poiData.length > 0 && (
+                <div className="poi-list">
+                  <h3>Điểm quan tâm được tìm thấy:</h3>
+                  <ul>
+                    {poiData.map((poi) => (
+                      <li key={poi.id}>
+                        <strong>{poi.name}</strong> - {poi.type}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              )}
+              <MapDisplay location={location} pois={poiData} />
+            </div>
+          )}
+        </div>
+      )}
+
+      {/* Sentiment Analysis Tab */}
+      {activeTab === 'sentiment' && (
+        <SentimentAnalysis />
+      )}
+
       <Translator />
     </div>
   )
